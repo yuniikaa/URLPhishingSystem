@@ -1,0 +1,234 @@
+{% load static %}
+<html>
+
+<head>
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+        html {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(#141e30, #243b55);
+        }
+
+        #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}
+
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        
+        .form-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .form-box .input-box {
+            position: relative;
+        }
+        
+        .form-box .input-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 10px;
+            color: white;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            background: transparent;
+        }
+        
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: #ffffff;
+            line-height: 57px;
+        }
+        
+        .form-box .input-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: white;
+            pointer-events: none;
+            transition: 0.5s;
+            transform: translateY(-60%);
+        }
+        
+        .form-box .input-box input:focus~label,
+        .form-box .input-box input :valid~label {
+            top: -5px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+        
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .btn:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+        .remember-forgot {
+            font-size: 0.9em;
+            color: #03e9f4;
+            font-weight: 500;
+            margin: -15px 0 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        .remember-forgot label input {
+            accent-color: #ffffff;
+            margin-right: 3px;
+        }
+        
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+        
+        .remember-forgot a {
+            color: #c12626;
+        }
+        .login-register {
+            font-size: 0.9em;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 500;
+            margin: 25px 0 10px;
+        }
+        
+        .login-register p a {
+            color: #c12626;
+            text-decoration: none;
+            font-weight: 600;
+            padding-left: 5px;
+        }
+        
+        .login-register p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Registration</title>
+</head>
+<video autoplay muted loop id="video-background">
+    <source src="{% static 'cc7.mp4' %}" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+
+<div class="form-box login">
+    <h2>Registration</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if messages %}
+        {{ message.tags }}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" class="form-control" id="exampleInput" name="first_name" required pattern="[A-Za-z]+" title="Enter your First Name">
+            <label>First Name</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" class="form-control" id="exampleInput" name="last_name" required pattern="[A-Za-z]+" title="Enter your First Name">
+            <label>Last Name</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <input type="text" class="form-control" id="exampleInput" name="username" required title="Enter your Username">
+            <label>Username</label>
+        </div>
+        <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required title="Enter your Password">
+            <label>Password</label>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <div class="login-register">
+            <p>Already have an account?<a href="{%url 'login' %}" class="register-link">Login</a></p>
+        </div>
+    </form>
+</div>
+</div>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    const loginText = document.querySelector(".title-text .login");
+    const loginForm = document.querySelector("form.login");
+    const loginBtn = document.querySelector("label.login");
+    const signupBtn = document.querySelector("label.signup");
+    const signupLink = document.querySelector("form .signup-link a");
+    signupBtn.onclick = (() => {
+        loginForm.style.marginLeft = "-50%";
+        loginText.style.marginLeft = "-50%";
+    });
+    loginBtn.onclick = (() => {
+        loginForm.style.marginLeft = "0%";
+        loginText.style.marginLeft = "0%";
+    });
+    signupLink.onclick = (() => {
+        signupBtn.click();
+        return false;
+    });
+</script>
+</body>
+
+</html>

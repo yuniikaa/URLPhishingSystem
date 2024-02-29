@@ -1,0 +1,456 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+        html {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                width: 100%;
+                font-family: "Poppins", sans-serif;
+                /* background: linear-gradient(#141e30, #243b55); */
+                background-position: center;
+                background-size: cover;
+            }
+            
+            #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}   
+
+.sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 110px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(17px);
+            --webkit-backdrop-filter: blur(17px);
+            border-right: 1px solid rgba(255, 255, 255, 0.7);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 300px;
+        }
+
+        .sidebar .logo {
+            color: #000;
+            display: flex;
+            align-items: center;
+            padding: 25px 10px 15px;
+        }
+
+        .logo img {
+            width: 43px;
+            border-radius: 50%;
+        }
+
+        .logo h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-left: 15px;
+            display: none;
+        }
+
+        .sidebar:hover .logo h2 {
+            display: block;
+        }
+
+        .sidebar .links {
+            list-style: none;
+            margin-top: 20px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            height: calc(100% - 140px);
+        }
+
+        .sidebar .links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .links li {
+            display: flex;
+            border-radius: 4px;
+            align-items: center;
+        }
+
+        .links li:hover {
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .links h4 {
+            color: #222;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .sidebar:hover .links h4 {
+            display: block;
+        }
+
+        .links hr {
+            margin: 10px 8px;
+            border: 1px solid #4c4c4c;
+        }
+
+        .sidebar:hover .links hr {
+            border-color: transparent;
+        }
+
+        .links li span {
+            padding: 12px 10px;
+        }
+
+        .links li a {
+            padding: 10px;
+            color: #000;
+            display: none;
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .sidebar:hover .links li a {
+            display: block;
+        }
+
+        .links .logout-link {
+            margin-top: 20px;
+        }
+
+        main {
+            margin-left: 120px;
+        }
+
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+
+        .form-box h1 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .form-box p {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .form-box a {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+h1{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+h2{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+  margin-right: auto;
+}
+
+.content-table thead tr {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  color: #ffffff;
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #355d79;
+}
+
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    width: auto;
+    height: 50px;
+    background: #162938;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #03e9f4;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 10px;
+    margin: 0 auto; 
+    display: block;
+}
+.btn:hover{
+    background: #03e9f4;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+}
+
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h2 id="header">Hello {{request.user}}</h2>
+        </div>
+        <ul class="links">
+            <h4>Main Menu</h4>
+           
+            <li>
+                <span class="material-symbols-outlined">show_chart</span>
+                <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">flag</span>
+                <a href="{% url 'Testdata' %}" >Test the data</a>
+            </li>
+            <hr>
+            <li>
+                <span class="material-symbols-outlined">person</span>
+                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">monitoring</span>
+                <a href="{% url 'analytic' %}" >Analytic</a>
+            </li>
+          
+            <hr>
+            <li class="logout-link">
+                <span class="material-symbols-outlined">logout</span>
+                <a href="{% url 'logout' %}" >Logout</a>
+            </li>
+        </ul>
+    </aside>
+
+    <video autoplay muted loop id="video-background">
+        <source src="{% static 'cc9.mp4' %}" type="video/mp4">
+        Your browser does not support HTML5 video.
+        </video>
+
+    <h1>{{message}}</h1>
+    <h2>Results from Multinomial Naive Bayes:</h2>
+    <div>
+        <table border="1" class="content-table">
+        <thead>
+            <tr>
+                <th>
+                    Values
+                </th>
+                    <th>
+                        Results
+                    </th>
+                
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>accuracy:</td>
+                    <td>{{Nb_accuracy}}</td>
+                </tr>
+
+                <tr>
+                    <td>precision_class_0:</td>
+                    <td>{{Nb_precision_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>recall_class_0:</td>
+                    <td>{{Nb_recall_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>f1_class_0:</td>
+                    <td>{{Nb_f1_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>precision_class_1:</td>
+                    <td>{{Nb_precision_class_1}}</td>
+                </tr>
+
+                <tr>
+                    <td>recall_class_1:</td>
+                    <td>{{Nb_recall_class_1}}</td>
+                </tr>
+
+                <tr>
+                    <td>f1_class_1:</td>
+                    <td>{{Nb_f1_class_1}}</td>
+                </tr>
+            </tbody>
+        </table>
+            </div>
+
+            <h1>Confusion Matrix</h1>
+
+        <table border="1" class="content-table">
+            <tr>
+                <th></th>
+                <th>True Positive</th>
+                <th>True Negative</th>
+                <th>False Positive</th>
+                <th>False Negative</th>
+            </tr>
+            <tr>
+                <th>Actual Positive</th>
+                <td>{{ saved_conf_matrix.true_positive }}</td>
+                <td>{{ saved_conf_matrix.true_negative }}</td>
+                <td>{{ saved_conf_matrix.false_positive }}</td>
+                <td>{{ saved_conf_matrix.false_negative }}</td>
+            </tr>
+        </table>
+
+            <h1>{{message}}</h1>
+            <h2>Results from Logistic Regression:</h2>
+            <div>
+                <table border="1" class="content-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Values
+                            </th>
+                            <th>
+                                Results
+                            </th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>accuracy:</td>
+                            <td>{{lr_accuracy}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>precision_class_0:</td>
+                            <td>{{lr_precision_class_0}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>recall_class_0:</td>
+                            <td>{{lr_recall_class_0}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>f1_class_0:</td>
+                            <td>{{lr_f1_class_0}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>precision_class_1:</td>
+                            <td>{{lr_precision_class_1}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>recall_class_1:</td>
+                            <td>{{lr_recall_class_1}}</td>
+                        </tr>
+            
+                        <tr>
+                            <td>f1_class_1:</td>
+                            <td>{{lr_f1_class_1}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h1>Confusion Matrix</h1>
+            
+            <table border="1" class="content-table">
+                <tr>
+                    <th></th>
+                    <th>True Positive</th>
+                    <th>True Negative</th>
+                    <th>False Positive</th>
+                    <th>False Negative</th>
+                </tr>
+                <tr>
+                    <th>Actual Positive</th>
+                    <td>{{ lr_saved_conf_matrix.true_positive }}</td>
+                    <td>{{ lr_saved_conf_matrix.true_negative }}</td>
+                    <td>{{ lr_saved_conf_matrix.false_positive }}</td>
+                    <td>{{ lr_saved_conf_matrix.false_negative }}</td>
+                </tr>
+            </table>
+<script>
+    function Dashboard(){
+        window.location.href="/Userlog/";
+    }
+
+</script>
+</body>
+</html>

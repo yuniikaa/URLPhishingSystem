@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+        * {
+    font-family: "Poppins", sans-serif;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #243b55;
+    align-items: center; 
+}
+ .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+.form-box h1{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.form-box .message{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+/* .form-box .message.red {
+            color: red;
+        }
+
+        .form-box .message.green {
+            color: green;
+        } */
+.form-box .btn{
+    width: auto;
+    height: 50px;
+    background: #162938;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #03e9f4;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 10px;
+    margin: 0 auto; 
+    display: block;
+}
+.form-box .btn:hover{
+    background: #03e9f4;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+}
+</style>
+</head>
+<body>
+    <div class="form-box Test">
+    <h1> SINGLE RESULTS</h1>
+    
+    <div class="message {% if result == 'Fraud' %}red{% else %}green{% endif %}">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+    </div><br>
+    
+    <button onclick=Dashboard() class="btn">Test with another data</button> </div>  
+<script>
+    function Dashboard(){
+        window.location.href="/manual_dataentry/";
+    }
+</script>
+</body>
+</html>

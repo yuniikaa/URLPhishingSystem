@@ -1,0 +1,369 @@
+{% load static %}
+<html>
+<head>
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+    
+            html {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                width: 100%;
+                font-family: "Poppins", sans-serif;
+                /* background: linear-gradient(#141e30, #243b55); */
+                background-position: center;
+                background-size: cover;
+            }
+            
+            #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}   
+.sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 110px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(17px);
+            --webkit-backdrop-filter: blur(17px);
+            border-right: 1px solid rgba(255, 255, 255, 0.7);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 300px;
+        }
+
+        .sidebar .logo {
+            color: #000;
+            display: flex;
+            align-items: center;
+            padding: 25px 10px 15px;
+        }
+
+        .logo img {
+            width: 43px;
+            border-radius: 50%;
+        }
+
+        .logo h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-left: 15px;
+            display: none;
+        }
+
+        .sidebar:hover .logo h2 {
+            display: block;
+        }
+
+        .sidebar .links {
+            list-style: none;
+            margin-top: 20px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            height: calc(100% - 140px);
+        }
+
+        .sidebar .links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .links li {
+            display: flex;
+            border-radius: 4px;
+            align-items: center;
+        }
+
+        .links li:hover {
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .links h4 {
+            color: #222;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .sidebar:hover .links h4 {
+            display: block;
+        }
+
+        .links hr {
+            margin: 10px 8px;
+            border: 1px solid #4c4c4c;
+        }
+
+        .sidebar:hover .links hr {
+            border-color: transparent;
+        }
+
+        .links li span {
+            padding: 12px 10px;
+        }
+
+        .links li a {
+            padding: 10px;
+            color: #000;
+            display: none;
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .sidebar:hover .links li a {
+            display: block;
+        }
+
+        .links .logout-link {
+            margin-top: 20px;
+        }
+
+        main {
+            margin-left: 120px;
+        }
+
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .form-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .form-box .input-box {
+            position: relative;
+        }
+        
+        .form-box .input-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 10px;
+            color: white;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            background: transparent;
+        }
+        
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: #ffffff;
+            line-height: 57px;
+        }
+        
+        .form-box .input-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: white;
+            pointer-events: none;
+            transition: 0.5s;
+            transform: translateY(-60%);
+        }
+        
+        .form-box .input-box input:focus~label,
+        .form-box .input-box input :valid~label {
+            top: -5px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+        
+        .btn {
+            overflow: hidden;
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+        }
+
+         .btn:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+        .check-box {
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.check-box input[type="checkbox"] {
+    display: none; /* Hide default checkbox */
+}
+
+.check-box input[type="checkbox"] + label {
+    display: inline-block;
+    font-size: 16px; /* Adjust font size */
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.check-box input[type="checkbox"] + label:before {
+    content: '';
+    display: inline-block;
+    width: 20px; /* Adjust width of the custom checkbox */
+    height: 20px; /* Adjust height of the custom checkbox */
+    border: 2px solid #aaa; /* Border color of the custom checkbox */
+    border-radius: 4px; /* Adjust border radius */
+    margin-right: 10px; /* Adjust spacing between checkbox and label text */
+    vertical-align: middle;
+}
+
+.check-box input[type="checkbox"]:checked + label:before {
+    background-color: #03e9f4; /* Background color when checkbox is checked */
+}
+
+/* Optional: Styling the checkmark inside the custom checkbox */
+.check-box input[type="checkbox"] + label:before {
+    content: '\2713'; /* Unicode character for checkmark */
+    color: #fff; /* Color of the checkmark */
+    font-size: 14px; /* Adjust font size of the checkmark */
+    text-align: center;
+    line-height: 20px; /* Adjust line height to center vertically */
+}
+.form-box .check-box label {
+    padding: 5px 5px;
+            font-size: 8px;
+            color: white;
+        }
+
+    </style>
+    <title>Manual Data Entry</title>
+</head>
+<body>
+   <aside class="sidebar">
+        <div class="logo">
+            <h2 id="header">Hello {{request.user}}</h2>
+        </div>
+        <ul class="links">
+            <h4>Main Menu</h4>
+           
+            <li>
+                <span class="material-symbols-outlined">show_chart</span>
+                <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">flag</span>
+                <a href="{% url 'Testdata' %}" >Test the data</a>
+            </li>
+            <hr>
+            <li>
+                <span class="material-symbols-outlined">person</span>
+                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">monitoring</span>
+                <a href="{% url 'analytic' %}" >Analytic</a>
+            </li>
+          
+            <hr>
+            <li class="logout-link">
+                <span class="material-symbols-outlined">logout</span>
+                <a href="{% url 'logout' %}" >Logout</a>
+            </li>
+        </ul>
+    </aside>
+    <video autoplay muted loop id="video-background">
+        <source src="{% static 'cc9.mp4' %}" type="video/mp4">
+        Your browser does not support HTML5 video.
+        </video>
+
+    <div class="form-box manual">
+        <h2>Manually Enter URLS</h2>
+        <form method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            
+            <div class="input-box">
+                <span class="icon"><ion-icon name="globe-outline"></ion-icon></span>
+                <input type="url" class="form-control" id="ccnum" name="homepage"  required>
+                <label>Enter Url</label>
+            </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class="check-box">
+                    <input type="checkbox" id="checkbox1" name="checkbox1" value="value1">
+                    <label for="checkbox1">Choose Multinomial Naive Bayes</label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox2" name="checkbox2" value="value2">
+                    <label for="checkbox2">Choose Logistic Regression</label>
+                </div>
+  
+            
+        <button type="submit" class="btn">Submit</button>
+    </form>
+
+
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    
+</body>
+</html>

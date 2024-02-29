@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <title>Test data</title>
+    <style>
+          @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+*{
+    margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+            width: 100%;
+            background-image: url("{% static 'hero.png' %}");
+            background-position: center;
+            background-size: cover;
+}
+.sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 110px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(17px);
+            --webkit-backdrop-filter: blur(17px);
+            border-right: 1px solid rgba(255, 255, 255, 0.7);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 300px;
+        }
+
+        .sidebar .logo {
+            color: #000;
+            display: flex;
+            align-items: center;
+            padding: 25px 10px 15px;
+        }
+
+        .logo img {
+            width: 43px;
+            border-radius: 50%;
+        }
+
+        .logo h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-left: 15px;
+            display: none;
+        }
+
+        .sidebar:hover .logo h2 {
+            display: block;
+        }
+
+        .sidebar .links {
+            list-style: none;
+            margin-top: 20px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            height: calc(100% - 140px);
+        }
+
+        .sidebar .links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .links li {
+            display: flex;
+            border-radius: 4px;
+            align-items: center;
+        }
+
+        .links li:hover {
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .links h4 {
+            color: #222;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .sidebar:hover .links h4 {
+            display: block;
+        }
+
+        .links hr {
+            margin: 10px 8px;
+            border: 1px solid #4c4c4c;
+        }
+
+        .sidebar:hover .links hr {
+            border-color: transparent;
+        }
+
+        .links li span {
+            padding: 12px 10px;
+        }
+
+        .links li a {
+            padding: 10px;
+            color: #000;
+            display: none;
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .sidebar:hover .links li a {
+            display: block;
+        }
+
+        .links .logout-link {
+            margin-top: 20px;
+        }
+
+        main {
+            margin-left: 120px;
+        }
+
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+
+        .form-box h1 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .form-box p {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .form-box a {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            align-items: center;
+            text-transform: uppercase;
+        }
+     
+        .btn {
+            overflow: hidden;
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 10px; /* Adjust top margin as needed */
+    margin-bottom: 10px; /* Adjust bottom margin as needed */
+    margin-left: 0; /* Adjust left margin as needed */
+    margin-right: 0; /* Adjust right margin as needed */
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+        }
+        .btn1 {
+            overflow: hidden;
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-align: center;
+            position: relative;
+            display: grid;
+            text-decoration: none; /* Remove underline */
+            place-items: center;
+        }
+
+.btn input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px; /* Adjust font size to your preference */
+    cursor: pointer;
+    opacity: 0;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding to your preference */
+    background-color: #03e9f4; /* Adjust background color */
+    color: #ffffff; /* Adjust text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 16px; /* Adjust font size to your preference */
+    cursor: pointer;
+    padding-left: 90px;
+}
+
+        .btn:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+        .btn1:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h2 id="header">Hello {{request.user}}</h2>
+        </div>
+        <ul class="links">
+            <h4>Main Menu</h4>
+           
+            <li>
+                <span class="material-symbols-outlined">show_chart</span>
+                <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">flag</span>
+                <a href="{% url 'Testdata' %}" >Test the data</a>
+            </li>
+            <hr>
+            <li>
+                <span class="material-symbols-outlined">person</span>
+                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+            </li>
+            <li>
+                <span class="material-symbols-outlined">monitoring</span>
+                <a href="{% url 'analytic' %}" >Analytic</a>
+            </li>
+          
+            <hr>
+            <li class="logout-link">
+                <span class="material-symbols-outlined">logout</span>
+                <a href="{% url 'logout' %}" >Logout</a>
+            </li>
+        </ul>
+    </aside>
+    <div class="form-box login">
+   <h1>Testing the Data</h1><br>
+    <p>Click on the "Choose File" button to upload a file:</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="btn">
+            <input type="file" name="testFile" id="myFile" accept=".pkl" required onchange="updateFileName(this)">
+            <label for="myFile" class="file-label" id="fileLabel">Choose file</label>
+        </div>
+        <button type="submit" class="btn">Upload</button>
+    </form><br>
+    <a href="{% url 'Testing' %}" class="btn1"> Testing</a> 
+
+
+    
+ </div>
+ 
+
+</body>
+<script>
+     function updateFileName(input) {
+    const fileLabel = document.getElementById('fileLabel');
+    if (input.files.length > 0) {
+        fileLabel.textContent = input.files[0].name;
+    } else {
+        fileLabel.textContent = 'Choose a .pkl file';
+    }
+}
+</script>
+</html>

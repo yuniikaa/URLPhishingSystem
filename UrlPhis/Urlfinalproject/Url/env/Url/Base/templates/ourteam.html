@@ -1,0 +1,215 @@
+{% load static %}
+
+<html>
+
+<head>
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+       
+        *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', Sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  /* background: linear-gradient(#141e30, #243b55); */
+  background-position: center;
+  background-size: cover;
+}
+
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+} 
+
+.blog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blog-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.blog-heading h1 {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    
+}
+
+.blog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    flex-wrap: wrap;
+}
+
+.blog-box {
+    width: 350px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    margin: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.blog-img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blog-text {
+  color: #03e9f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+
+.blog-text p {
+    color: #ffffff;
+    font-size: 0.9rem;
+    
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+   
+    margin: 20px 0px;
+    text-align: justify;
+}
+
+.button-container {
+    white-space: nowrap; /* Prevents line breaks */
+}
+
+.button-container a {
+    display: inline-block; /* Make buttons appear side by side */
+    margin-right: 10px; /* Adjust spacing between buttons */
+}
+
+button {
+    overflow: hidden;
+    width: 200px;
+    height: 45px;
+    background: #03e9f4;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+}
+
+
+button:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+}
+    </style>
+    <title>Our Team</title>
+</head>
+
+<body>
+  <video autoplay muted loop id="video-background">
+    <source src="{% static 'cc11.mp4' %}" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+
+    <section class="blog">
+      <div class="blog-heading">
+        <h1>Our Team</h1>
+      </div>
+  
+
+      <div class="blog-container">
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src= "{% static 'pratik.jpg' %}">
+          </div>
+          <div class="blog-text">
+            <span>Pratik Kayastha</span>
+          </div>
+        </div>
+  
+  
+  
+  
+
+  
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src= "{% static 's.jpg' %}">
+          </div>
+          <div class="blog-text">
+            <span>Shayan Bista</span>      
+          </div>
+        </div>
+        <div class="blog-box">
+          <div class="blog-img">
+            <img src= "{% static 'y.jpg' %}">
+          </div>
+          <div class="blog-text">
+            <span>Yunika Shakya</span>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <a href="{% url 'login' %}"><button type="button">GET STARTED</button></a>
+        <a href="{% url 'home' %}"><button type="button">HOME</button></a>
+    </div>
+    
+    </section>
+</body>
+</html>
