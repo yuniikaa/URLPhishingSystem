@@ -160,6 +160,33 @@
         .login-register p a:hover {
             text-decoration: underline;
         }
+
+        button {
+    overflow: hidden;
+    width: 150px;
+    height: 45px;
+    background: #03e9f4;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+    
+}
+
+button:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+}
     </style>
     <title>Login</title>
 </head>
@@ -174,13 +201,21 @@
         <form method="post">
             {% csrf_token %}
             {% if messages %}
+                {% for message in messages %}
+                    <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <!-- {% csrf_token %}
+            {% if messages %}
             {{ message.tags }}
             <div class="alert alert-success" role="alert">
                 {% for message in messages %}
                 {{ message }}
                 {% endfor %}
             </div>
-            {% endif %}
+            {% endif %} -->
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
                 <input type="text" class="form-control" id="exampleInput" name="username" required title="Enter your Username">
@@ -195,6 +230,7 @@
             <div class="login-register">
                 <p>Don't have an account?
                     <a href="{% url 'registration' %}" class="register-link">Register</a></p>
+                    <a href="{% url 'home' %}"><button type="button">HOME</button></a>
             </div>
         </form>
     </div>
@@ -219,6 +255,14 @@
     signupLink.onclick = (() => {
         signupBtn.click();
         return false;
+    });
+    document.addEventListener("DOMContentLoaded", function(event) {
+        setTimeout(function() {
+            var messages = document.getElementsByClassName('message');
+            for (var i = 0; i < messages.length; i++) {
+                messages[i].style.display = 'none';
+            }
+        }, 3000); // Adjust timeout duration (in milliseconds) as needed
     });
 </script>
 </body>

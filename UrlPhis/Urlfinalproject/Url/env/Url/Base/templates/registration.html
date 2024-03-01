@@ -160,6 +160,33 @@
         .login-register p a:hover {
             text-decoration: underline;
         }
+
+        button {
+    overflow: hidden;
+    width: 150px;
+    height: 45px;
+    background: #03e9f4;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove underline */
+    
+}
+
+button:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+}
     </style>
     <title>Registration</title>
 </head>
@@ -203,6 +230,7 @@
         <button type="submit" class="btn">Register</button>
         <div class="login-register">
             <p>Already have an account?<a href="{%url 'login' %}" class="register-link">Login</a></p>
+            <a href="{% url 'home' %}"><button type="button">HOME</button></a>
         </div>
     </form>
 </div>

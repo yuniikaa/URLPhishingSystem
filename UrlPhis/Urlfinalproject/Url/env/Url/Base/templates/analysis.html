@@ -10,23 +10,19 @@
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-        html {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Poppins", sans-serif;
-            }
-            
-            body {
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                width: 100%;
-                font-family: "Poppins", sans-serif;
-                /* background: linear-gradient(#141e30, #243b55); */
-                background-position: center;
-                background-size: cover;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 95vh;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+        }
             
             #video-background {
   position: fixed;
@@ -103,11 +99,11 @@
 
         .links li:hover {
             cursor: pointer;
-            background: #fff;
+            background: #ffffff;
         }
 
         .links h4 {
-            color: #222;
+            color: #000000;
             font-weight: 500;
             display: none;
             margin-bottom: 10px;
@@ -160,7 +156,7 @@
             transform: translate(-50%, -50%);
             background: rgba(0, 0, 0, 0.9);
             box-sizing: border-box;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.85);
             border-radius: 10px;
         }
 
@@ -190,12 +186,12 @@
 h1{
     text-align: center;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 h2{
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
@@ -206,8 +202,8 @@ h2{
     min-width: 400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
     margin-left: auto;
   margin-right: auto;
 }
@@ -263,12 +259,13 @@ h2{
     </style>
 </head>
 <body>
+    
     <aside class="sidebar">
         <div class="logo">
             <h2 id="header">Hello {{request.user}}</h2>
         </div>
         <ul class="links">
-            <h4>Main Menu</h4>
+            <h4>Admin Dashboard</h4>
            
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
@@ -301,8 +298,8 @@ h2{
         Your browser does not support HTML5 video.
         </video>
 
-    <h1>{{message}}</h1>
-    <h2>Results from Multinomial Naive Bayes:</h2>
+    <h1>{{message}}</h1><br><br>
+    <h1>Results from Multinomial Naive Bayes:</h1>
     <div>
         <table border="1" class="content-table">
         <thead>
@@ -366,7 +363,7 @@ h2{
                 <th>False Negative</th>
             </tr>
             <tr>
-                <th>Actual Positive</th>
+                <th></th>
                 <td>{{ saved_conf_matrix.true_positive }}</td>
                 <td>{{ saved_conf_matrix.true_negative }}</td>
                 <td>{{ saved_conf_matrix.false_positive }}</td>
@@ -375,7 +372,7 @@ h2{
         </table>
 
             <h1>{{message}}</h1>
-            <h2>Results from Logistic Regression:</h2>
+            <h1>Results from Logistic Regression:</h1>
             <div>
                 <table border="1" class="content-table">
                     <thead>
@@ -439,13 +436,13 @@ h2{
                     <th>False Negative</th>
                 </tr>
                 <tr>
-                    <th>Actual Positive</th>
+                    <th></th>
                     <td>{{ lr_saved_conf_matrix.true_positive }}</td>
                     <td>{{ lr_saved_conf_matrix.true_negative }}</td>
                     <td>{{ lr_saved_conf_matrix.false_positive }}</td>
                     <td>{{ lr_saved_conf_matrix.false_negative }}</td>
                 </tr>
-            </table>
+            </table><br><br>
 <script>
     function Dashboard(){
         window.location.href="/Userlog/";

@@ -7,9 +7,7 @@ from io import StringIO
 from geopy.geocoders import Nominatim
 from django.contrib import messages
 from django.conf import settings
-
-
-# from UrlPhising import settings
+from django.contrib.messages import get_messages
 from .models import *
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
@@ -57,16 +55,24 @@ def Home(request):
             if text_field_value == "lr":
                 print("lr is selected")
                 res = Single_url_check_lr(url)
+                if res == 0:
+                    messages.success(request, "This URL is Safe")
+                else:
+                    messages.error(request, "This URL is Unsafe")
             else:
                 print("mnb is selected")
                 res = Single_url_check_Nb(url)
+                if res == 0:
+                    messages.success(request, "This URL is Safe")
+                else:
+                    messages.error(request, "This URL is Unsafe")
         else:
             res = Single_url_check_lr(url)
-
-        messages.success(request, str(res))
+            if res == 0:
+                messages.success(request, "This URL is Safe")
+            else:
+                messages.error(request, "This URL is Unsafe")
         return redirect("home")
-        # return HttpResponseRedirect(redirect_url)
-
     return render(request, "index.html")
 
 
@@ -91,7 +97,8 @@ def login_page(request):
             messages.info(request, "Invalid credentials.")
             return redirect("/login/")
         else:
-            messages.info(request, "Successful.")
+            
+            # messages.info(request, "Successful.")
             login(request, user)
             return redirect("/Userlog/")
 
@@ -118,8 +125,10 @@ def registration(request):
         return redirect("/registration/")
     return render(request, "registration.html")
 
-
 def manual_dataentry(request):
+    storage = get_messages(request)
+    for message in storage:
+        pass
     if request.method == "POST":
         url = request.POST.get("homepage")
         if url.startswith("http://"):
@@ -127,10 +136,22 @@ def manual_dataentry(request):
         elif url.startswith("https://"):
             url = url[len("https://") :]
         print(url)
+        
+        # Calculate res1 and res2
         res1 = Single_url_check_Nb(url)
         res2 = Single_url_check_lr(url)
-        messages.success(request, f"Result from Multinomial Naive Bayes: {res1}")
-        messages.success(request, f"Result From Logistic Regression: {res2}")
+        
+        # Create messages based on res1 and res2
+        if res1 == 0:
+            messages.success(request, "Result from Multinomial Naive Bayes: Safe")
+        else:
+            messages.error(request, "Result from Multinomial Naive Bayes: Unsafe")
+        
+        if res2 == 0:
+            messages.success(request, "Result from Logistic Regression: Safe")
+        else:
+            messages.error(request, "Result from Logistic Regression: Unsafe")
+        
         if "checkbox1" in request.POST:
             # Checkbox1 is selected
             print("Checkbox 1 is selected.")
@@ -153,9 +174,10 @@ def manual_dataentry(request):
         else:
             # Checkbox2 is not selected
             print("Checkbox 2 is not selected.")
+        
         return redirect("manual_dataentry")
+    
     return render(request, "manual.html")
-
 
 def User_log(request):
 
@@ -166,7 +188,6 @@ def DataTrain(request):
     if request.method == "POST":
         uploaded_file = request.FILES.get("file")
         if uploaded_file and uploaded_file.name.endswith(".pkl"):
-            # Define the directory where files will be saved
             uploaded_file.name = "train_data.pkl"
 
             curr_dir = os.getcwd()
@@ -174,13 +195,11 @@ def DataTrain(request):
             upload_dir = os.path.join(curr_dir, folder_name)
 
             fs = FileSystemStorage(location=upload_dir)
-            # Save the uploaded file to the specified directory
             if fs.exists(uploaded_file.name):
 
                 fs.delete(uploaded_file.name)
 
             fs.save(uploaded_file.name, uploaded_file)
-            # Get the file path
             file_path = os.path.join(upload_dir, uploaded_file.name)
             value = "true"
             pickle_file_instance = PickleFile()
@@ -199,7 +218,7 @@ def Trainmodel(request):
         Nb = NaiveBayes_model()
         train_check = False
         if Lr and Nb:
-            train_check = True
+            train_check = "Training Complete"
         while train_check:
             return render(request, "TrainedModel.html", {"train_check": train_check})
     else:
@@ -212,7 +231,6 @@ def Testdata(request):
     if request.method == "POST":
         uploaded_file = request.FILES.get("testFile")
         if uploaded_file and uploaded_file.name.endswith(".pkl"):
-            # Define the directory where files will be saved
             uploaded_file.name = "test_data.pkl"
 
             curr_dir = os.getcwd()
@@ -332,7 +350,7 @@ def Testing(request):
         lr_test = Logistic_testing()
         Nb_test = NaiveBayes_testing()
         if Nb_test and lr_test:
-            test_check = True
+            test_check = "Test Complete"
             while test_check:
                 return render(request, "testing.html", {"test_check": test_check})
     else:

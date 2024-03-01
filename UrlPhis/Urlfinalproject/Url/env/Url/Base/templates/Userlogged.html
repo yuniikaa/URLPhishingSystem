@@ -19,7 +19,7 @@
         }
 
         body {
-            height: 100vh;
+            height: 95vh;
             width: 100%;
             background-image: url("{% static 'cc10.jpeg ' %}");
             background-position: center;
@@ -142,6 +142,16 @@
         #header{
             color: rgb(0, 0, 0);
         }
+        #head {
+    color: rgb(255, 255, 255); /* Text color */
+    font-size: 100px; /* Font size */
+    font-weight: bold; /* Font weight */
+    text-align: center; /* Text alignment */
+    margin: 10px 0; /* Margin top and bottom */
+    padding: 5px; /* Padding */
+    text-transform: uppercase;
+}
+
     </style>
 </head>
 
@@ -151,7 +161,7 @@
             <h2 id="header">Hello {{request.user}}</h2>
         </div>
         <ul class="links">
-            <h4>Main Menu</h4>
+            <h4>Admin Dashboard</h4>
             
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
@@ -180,7 +190,7 @@
         </ul>
     </aside>
     <main>
-        <h1>hello {{request.user}}</h1>
+        <h1 id="head">hello {{request.user}}</h1>
     </main>
 </body>
 

@@ -11,26 +11,22 @@
     <style>
             @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
     
-            html {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Poppins", sans-serif;
-            }
-            
-            body {
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                width: 100%;
-                font-family: "Poppins", sans-serif;
-                /* background: linear-gradient(#141e30, #243b55); */
-                background-position: center;
-                background-size: cover;
-            }
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 95vh;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+        }
             
             #video-background {
-  position: fixed;
+                position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
@@ -103,11 +99,11 @@
 
         .links li:hover {
             cursor: pointer;
-            background: #fff;
+            background: #ffffff;
         }
 
         .links h4 {
-            color: #222;
+            color: #000000;
             font-weight: 500;
             display: none;
             margin-bottom: 10px;
@@ -284,6 +280,27 @@
             font-size: 8px;
             color: white;
         }
+        .messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.messages li {
+    color: white;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.message.error {
+    /* Style for error messages */
+    color: red;
+}
+
+.message.success {
+    /* Style for success messages */
+    color: rgb(0, 202, 0);
+}
 
     </style>
     <title>Manual Data Entry</title>
@@ -294,7 +311,7 @@
             <h2 id="header">Hello {{request.user}}</h2>
         </div>
         <ul class="links">
-            <h4>Main Menu</h4>
+            <h4>Admin Dashboard</h4>
            
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
@@ -339,7 +356,9 @@
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                <li>{{ message }}</li>
+                <li class="message {% if message.tags == 'error' %}error{% elif message.tags == 'success' %}success{% endif %}">
+                    {{ message }}
+                </li>
                 {% endfor %}
             </ul>
             {% endif %}
