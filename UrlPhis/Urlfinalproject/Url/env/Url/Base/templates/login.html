@@ -187,7 +187,22 @@ button:hover{
             border-radius: 5px;
             box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
 }
-    </style>
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.message.info {
+    /* Style for error messages */
+    color:  #c12626;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+}
+ </style>
+
     <title>Login</title>
 </head>
 
@@ -206,7 +221,7 @@ button:hover{
                         {{ message }}
                     </div>
                 {% endfor %}
-            {% endif %}
+            {% endif %} <br>
             <!-- {% csrf_token %}
             {% if messages %}
             {{ message.tags }}

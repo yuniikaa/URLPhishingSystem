@@ -90,20 +90,19 @@ def login_page(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         if not User.objects.filter(username=username).exists():
-            messages.info(request, "Username doesnt exist.")
+            messages.info(request, "Username doesnt exist")
             return redirect("/login/")
         user = authenticate(username=username, password=password)
         if user is None:
-            messages.info(request, "Invalid credentials.")
+            messages.info(request, "Invalid credentials")
             return redirect("/login/")
         else:
             
-            # messages.info(request, "Successful.")
+            # messages.info(request, "Successful")
             login(request, user)
             return redirect("/Userlog/")
 
     return render(request, "login.html")
-
 
 def registration(request):
     if request.method == "POST":
@@ -111,19 +110,38 @@ def registration(request):
         last_name = request.POST.get("last_name")
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = User.objects.filter(username=username, password=password)
-        if user.exists():
-            messages.info(request, "Same username cant exist.")
+        
+        # Check if the username already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists")
             return redirect("/registration/")
-        else:
-            user = User.objects.create(
-                first_name=first_name, last_name=last_name, username=username
-            )
-        user.set_password(password)
-        user.save()
-        messages.info(request, "Account Created Successfully")
+        
+        # Create the user
+        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password)
+        messages.success(request, "Registered successfully")
         return redirect("/registration/")
+    
     return render(request, "registration.html")
+
+# def registration(request):
+#     if request.method == "POST":
+#         first_name = request.POST.get("first_name")
+#         last_name = request.POST.get("last_name")
+#         username = request.POST.get("username")
+#         password = request.POST.get("password")
+#         user = User.objects.filter(username=username, password=password)
+#         if user.exists():
+#             messages.error(request, "Same username can't exist")
+#             return redirect("/registration/")
+#         else:
+#             user = User.objects.create(
+#                 first_name=first_name, last_name=last_name, username=username
+#             )
+#         user.set_password(password)
+#         user.save()
+#         messages.success(request, "Registered Successfully")
+#         return redirect("/registration/")
+#     return render(request, "registration.html")
 
 def manual_dataentry(request):
     storage = get_messages(request)

@@ -187,6 +187,27 @@ button:hover{
             border-radius: 5px;
             box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
 }
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.message.error {
+    /* Style for error messages */
+    color:  #c12626;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+}
+.message.success {
+    /* Style for error messages */
+    color:  rgb(36, 195, 36);
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+}
     </style>
     <title>Registration</title>
 </head>
@@ -201,12 +222,13 @@ button:hover{
         {% csrf_token %}
         {% if messages %}
         {{ message.tags }}
-        <div class="alert alert-success" role="alert">
             {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
             {{ message }}
             {% endfor %}
         </div>
         {% endif %}
+        <br>
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
             <input type="text" class="form-control" id="exampleInput" name="first_name" required pattern="[A-Za-z]+" title="Enter your First Name">

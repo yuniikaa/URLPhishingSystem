@@ -21,10 +21,20 @@
         body {
             height: 95vh;
             width: 100%;
-            background-image: url("{% static 'cc10.jpeg ' %}");
             background-position: center;
             background-size: cover;
         }
+
+        #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100px;
+  min-height: 100px;
+  width: 100%; /* Set width to 100% of the viewport */
+  z-index: -100;
+}
+
         .sidebar {
             position: fixed;
             top: 0;
@@ -34,7 +44,7 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.208);
+            background: rgba(255, 255, 255, 0.316);
             backdrop-filter: blur(10px);
             --webkit-backdrop-filter: blur(17px);
             border-right: 1px solid rgba(255, 255, 255, 0.7);
@@ -144,7 +154,8 @@
         }
         #head {
     color: rgb(255, 255, 255); /* Text color */
-    font-size: 100px; /* Font size */
+    font-size: 70px; /* Font size */
+    font-style: italic;
     font-weight: bold; /* Font weight */
     text-align: center; /* Text alignment */
     margin: 10px 0; /* Margin top and bottom */
@@ -156,6 +167,12 @@
 </head>
 
 <body>
+
+    <video autoplay muted loop id="video-background">
+        <source src="{% static 'cc13.mp4' %}" type="video/mp4">
+        Your browser does not support HTML5 video.
+        </video>
+
     <aside class="sidebar">
         <div class="logo">
             <h2 id="header">Hello {{request.user}}</h2>
@@ -188,7 +205,7 @@
                 <a href="{% url 'logout' %}" >Logout</a>
             </li>
         </ul>
-    </aside>
+    </aside><br><br><br>
     <main>
         <h1 id="head">hello {{request.user}}</h1>
     </main>
