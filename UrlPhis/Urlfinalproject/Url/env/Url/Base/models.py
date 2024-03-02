@@ -61,7 +61,6 @@ class ModelSelected(models.Model):
     text_field = models.CharField(max_length=100)
 
 
-# Create your models here.
 class Account(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 

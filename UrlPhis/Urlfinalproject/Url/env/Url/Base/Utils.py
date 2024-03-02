@@ -5,7 +5,6 @@ import numpy as np
 import random
 from geopy.geocoders import Nominatim
 
-# from sklearn.base import accuracy_score
 from .models import *
 
 from sklearn.metrics import precision_recall_fscore_support
@@ -145,7 +144,7 @@ def NaiveBayes_model():
 
         return log_likelihood_y0, log_likelihood_y1
 
-    # # Example usage:
+    
     log_w_y0, log_w_y1 = calc_log_likelihood(w_y0, w_y1, x_train)
 
     print(
@@ -277,9 +276,9 @@ def load_NaivePickleModel():
     pickle_file_path = os.path.join(current_dir, folder_name, "NaiveModelTrained.pkl")
 
     if os.path.exists(pickle_file_path):
-        # Load the classifier from the pickle file
         try:
-            f_y0, f_y1 = joblib.load(pickle_file_path)
+            with open(pickle_file_path, "rb") as file:
+                f_y0, f_y1 = pickle.load(file)
             return f_y0, f_y1
         except Exception as e:
             print("Error loading pickle file:", e)
@@ -297,7 +296,6 @@ def load_LogisticModel():
     )
 
     if os.path.exists(pickle_file_path):
-        # Load the classifier from the pickle file
         try:
             ls = joblib.load(pickle_file_path)
             return ls
@@ -322,9 +320,10 @@ def NaiveBayes_testing():
         log_likelihood_y0 = []
         log_likelihood_y1 = []
 
-        for i in range(x.shape[0]):
+        for i in range(x.shape[0]):  
             f_y0_arr = np.asarray(f_y0).flatten()
             f_y1_arr = np.asarray(f_y1).flatten()
+
             log_likelihood_y0.append(
                 np.sum(np.log(f_y0_arr) * x[i, :].toarray().flatten())
             )
@@ -349,6 +348,7 @@ def NaiveBayes_testing():
 
         return posterior_y0, posterior_y1
 
+    
     posterior_y0, posterior_y1 = calc_posterior(log_w_y0, log_w_y1, y_test)
 
     print(
@@ -362,9 +362,11 @@ def NaiveBayes_testing():
 
     def classify(p_y0, p_y1, y):
 
+       
         class_pred = [
             0 if p_y0[i] > p_y1[i] or p_y0[i] == p_y1[i] else 1 for i in range(len(y))
         ]
+
         true_pos = len([i for i in range(len(y)) if y[i] == 0 and class_pred[i] == 0])
         true_neg = len([i for i in range(len(y)) if y[i] == 1 and class_pred[i] == 1])
         false_pos = len([i for i in range(len(y)) if y[i] == 0 and class_pred[i] == 1])
@@ -381,6 +383,7 @@ def NaiveBayes_testing():
     print("now calling the testing function")
 
     def test_NB_model(x_test, y_test, f_y0, f_y1):
+        
         logLH_test_y0, logLH_test_y1 = calc_log_likelihood(f_y0, f_y1, x_test)
         posterior_test_y0, posterior_test_y1 = calc_posterior(
             logLH_test_y0, logLH_test_y1, y_test
@@ -440,9 +443,9 @@ def NaiveBayes_testing():
 
 def Logistic_testing():
     x_test, y_test = load_testingData_from_pickle()
-    x_test = x_test
-    print(x_test)
-    y_test = y_test
+    x_test = x_test[:50000]
+    print(x_test.shape)
+    y_test = y_test[:50000]
     x_test, y_test = load_testingData_from_pickle()
     y_test = [0 if label == "good" else 1 for label in y_test]
     ls = load_LogisticModel()
@@ -454,7 +457,7 @@ def Logistic_testing():
     recall_0 = recall_score(y_test, y_pred, pos_label=0)
     f1_0 = f1_score(y_test, y_pred, pos_label=0)
 
-    # Calculate precision, recall, and F1-score for class 1
+   
     precision_1 = precision_score(y_test, y_pred, pos_label=1)
     recall_1 = recall_score(y_test, y_pred, pos_label=1)
     f1_1 = f1_score(y_test, y_pred, pos_label=1)
@@ -471,7 +474,7 @@ def Logistic_testing():
     )
     lr_confusion_matrix_instance.save()
 
-    # Print evaluation metrics
+   
     print("Accuracy:", accuracy)
     print("Precision (Class 0):", precision_0)
     print("Recall (Class 0):", recall_0)
@@ -505,11 +508,11 @@ def Single_url_check_Nb(Url):
         log_likelihood_y0 = []
         log_likelihood_y1 = []
 
-        for i in range(x.shape[0]):  # Iterate over valid row indices
+        for i in range(x.shape[0]):  
             f_y0_arr = np.asarray(f_y0).flatten()
             f_y1_arr = np.asarray(f_y1).flatten()
 
-            # Perform element-wise multiplication with the sparse row x[i, :]
+          
             log_likelihood_y0.append(
                 np.sum(np.log(f_y0_arr) * x[i, :].toarray().flatten())
             )
@@ -522,7 +525,6 @@ def Single_url_check_Nb(Url):
     def calc_posterior(logLH_y0, logLH_y1, y):
         epsilon = 1e-10
 
-        # Calculate class priors based on class counts
         log_prior_y0 = np.log(np.count_nonzero(y == 0) / len(y) + epsilon)
         log_prior_y1 = np.log(np.count_nonzero(y == 1) / len(y) + epsilon)
 
@@ -537,15 +539,14 @@ def Single_url_check_Nb(Url):
 
     posterior_y0, posterior_y1 = calc_posterior(
         log_likelihood_y0, log_likelihood_y1, [0]
-    )  # Assuming class  0 is 'good'
+    )  
 
-    # Classify the single data point
+  
     if posterior_y0 > posterior_y1:
-        predicted_label = 0  # Class  0 represents 'good'
+        predicted_label = 0 
     else:
-        predicted_label = 1  # Class  1 represents 'bad'
+        predicted_label = 1
 
-    # Optionally, print the predicted label
     print("Predicted label by naive bayes", predicted_label)
 
     return predicted_label

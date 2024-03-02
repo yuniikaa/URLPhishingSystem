@@ -1,6 +1,5 @@
 {% load static %}
 <html>
-
 <head>
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <meta charset="UTF-8">
@@ -15,7 +14,7 @@
         html {
             height: 100%;
         }
-        
+
         body {
             margin: 0;
             padding: 0;
@@ -24,16 +23,16 @@
         }
 
         #video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background-size: cover;
-}
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+        }
 
         .form-box {
             position: absolute;
@@ -47,7 +46,7 @@
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
             border-radius: 10px;
         }
-        
+
         .form-box h2 {
             margin: 0 0 30px;
             padding: 0;
@@ -55,11 +54,11 @@
             text-align: center;
             text-transform: uppercase;
         }
-        
+
         .form-box .input-box {
             position: relative;
         }
-        
+
         .form-box .input-box input {
             width: 100%;
             padding: 10px 0;
@@ -71,7 +70,7 @@
             outline: none;
             background: transparent;
         }
-        
+
         .input-box .icon {
             position: absolute;
             right: 8px;
@@ -79,7 +78,7 @@
             color: #ffffff;
             line-height: 57px;
         }
-        
+
         .form-box .input-box label {
             position: absolute;
             top: 0;
@@ -91,7 +90,7 @@
             transition: 0.5s;
             transform: translateY(-60%);
         }
-        
+
         .form-box .input-box input:focus~label,
         .form-box .input-box input :valid~label {
             top: -5px;
@@ -99,7 +98,7 @@
             color: #03e9f4;
             font-size: 12px;
         }
-        
+
         .btn {
             width: 100%;
             height: 45px;
@@ -114,12 +113,14 @@
             text-transform: uppercase;
             letter-spacing: 4px;
         }
-        .btn:hover{
+
+        .btn:hover {
             background: #03e9f4;
             color: white;
             border-radius: 5px;
-            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
         }
+
         .remember-forgot {
             font-size: 0.9em;
             color: #03e9f4;
@@ -129,19 +130,20 @@
             flex-direction: row;
             justify-content: space-between;
         }
-        
+
         .remember-forgot label input {
             accent-color: #ffffff;
             margin-right: 3px;
         }
-        
+
         .remember-forgot a:hover {
             text-decoration: underline;
         }
-        
+
         .remember-forgot a {
             color: #c12626;
         }
+
         .login-register {
             font-size: 0.9em;
             color: #ffffff;
@@ -149,81 +151,79 @@
             font-weight: 500;
             margin: 25px 0 10px;
         }
-        
+
         .login-register p a {
             color: #c12626;
             text-decoration: none;
             font-weight: 600;
             padding-left: 5px;
         }
-        
+
         .login-register p a:hover {
             text-decoration: underline;
         }
 
         button {
-    overflow: hidden;
-    width: 150px;
-    height: 45px;
-    background: #03e9f4;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #ffffff;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    position: relative;
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
-    
-}
+            overflow: hidden;
+            width: 150px;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+        }
 
-button:hover{
+        button:hover {
             background: #03e9f4;
             color: white;
             border-radius: 5px;
-            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
-}
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+        }
 
-.messages {
-    list-style-type: none;
-    padding: 0;
-}
+        .messages {
+            list-style-type: none;
+            padding: 0;
+        }
 
+        .message.error {
+            color: #c12626;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+        }
 
-.message.error {
-    /* Style for error messages */
-    color:  #c12626;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-}
-.message.success {
-    /* Style for error messages */
-    color:  rgb(36, 195, 36);
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: bold;
-}
+        .message.success {
+            color: rgb(36, 195, 36);
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+        }
     </style>
     <title>Registration</title>
 </head>
 <video autoplay muted loop id="video-background">
     <source src="{% static 'cc7.mp4' %}" type="video/mp4">
     Your browser does not support HTML5 video.
-    </video>
+</video>
 
 <div class="form-box login">
     <h2>Registration</h2>
     <form method="post">
+
         {% csrf_token %}
         {% if messages %}
         {{ message.tags }}
-            {% for message in messages %}
-            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+        {% for message in messages %}
+        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
             {{ message }}
             {% endfor %}
         </div>
@@ -231,22 +231,26 @@ button:hover{
         <br>
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input type="text" class="form-control" id="exampleInput" name="first_name" required pattern="[A-Za-z]+" title="Enter your First Name">
+            <input type="text" class="form-control" id="exampleInput" name="first_name" required pattern="[A-Za-z]+"
+                title="Enter your First Name">
             <label>First Name</label>
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input type="text" class="form-control" id="exampleInput" name="last_name" required pattern="[A-Za-z]+" title="Enter your First Name">
+            <input type="text" class="form-control" id="exampleInput" name="last_name" required pattern="[A-Za-z]+"
+                title="Enter your First Name">
             <label>Last Name</label>
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="person"></ion-icon></span>
-            <input type="text" class="form-control" id="exampleInput" name="username" required title="Enter your Username">
+            <input type="text" class="form-control" id="exampleInput" name="username" required
+                title="Enter your Username">
             <label>Username</label>
         </div>
         <div class="input-box">
             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required title="Enter your Password">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required
+                title="Enter your Password">
             <label>Password</label>
         </div>
         <button type="submit" class="btn">Register</button>

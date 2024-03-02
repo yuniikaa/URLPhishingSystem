@@ -23,8 +23,6 @@ from django.core.files.storage import FileSystemStorage
 from .models import PickleFile
 import os
 
-
-# from .forms import UploadPickleForm
 from .models import PickleFile
 
 import pickle
@@ -32,7 +30,6 @@ import pickle
 from sklearn.metrics import precision_recall_fscore_support
 from django.http import HttpResponseRedirect
 
-# Model Train Function:
 global_list = []
 
 
@@ -98,7 +95,6 @@ def login_page(request):
             return redirect("/login/")
         else:
             
-            # messages.info(request, "Successful")
             login(request, user)
             return redirect("/Userlog/")
 
@@ -111,37 +107,15 @@ def registration(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         
-        # Check if the username already exists
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists")
             return redirect("/registration/")
         
-        # Create the user
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password)
         messages.success(request, "Registered successfully")
         return redirect("/registration/")
     
     return render(request, "registration.html")
-
-# def registration(request):
-#     if request.method == "POST":
-#         first_name = request.POST.get("first_name")
-#         last_name = request.POST.get("last_name")
-#         username = request.POST.get("username")
-#         password = request.POST.get("password")
-#         user = User.objects.filter(username=username, password=password)
-#         if user.exists():
-#             messages.error(request, "Same username can't exist")
-#             return redirect("/registration/")
-#         else:
-#             user = User.objects.create(
-#                 first_name=first_name, last_name=last_name, username=username
-#             )
-#         user.set_password(password)
-#         user.save()
-#         messages.success(request, "Registered Successfully")
-#         return redirect("/registration/")
-#     return render(request, "registration.html")
 
 def manual_dataentry(request):
     storage = get_messages(request)
@@ -155,11 +129,9 @@ def manual_dataentry(request):
             url = url[len("https://") :]
         print(url)
         
-        # Calculate res1 and res2
         res1 = Single_url_check_Nb(url)
         res2 = Single_url_check_lr(url)
         
-        # Create messages based on res1 and res2
         if res1 == 0:
             messages.success(request, "Result from Multinomial Naive Bayes: Safe")
         else:
@@ -171,26 +143,21 @@ def manual_dataentry(request):
             messages.error(request, "Result from Logistic Regression: Unsafe")
         
         if "checkbox1" in request.POST:
-            # Checkbox1 is selected
             print("Checkbox 1 is selected.")
             mnb = "mnb"
             model_selected = ModelSelected.objects.create(text_field=str(mnb))
             print("Naive Bayes is saved")
             model_selected.save()
         else:
-            # Checkbox1 is not selected
             print("Checkbox 1 is not selected.")
 
-        # Check if checkbox2 is selected
         if "checkbox2" in request.POST:
-            # Checkbox2 is selected
             print("Checkbox 2 is selected.")
             lr = "lr"
             model_selected = ModelSelected.objects.create(text_field=str(lr))
             print("logistic_model is saved")
             model_selected.save()
         else:
-            # Checkbox2 is not selected
             print("Checkbox 2 is not selected.")
         
         return redirect("manual_dataentry")
@@ -257,13 +224,11 @@ def Testdata(request):
             print(upload_dir)
 
             fs = FileSystemStorage(location=upload_dir)
-            # Save the uploaded file to the specified directory
             if fs.exists(uploaded_file.name):
 
                 fs.delete(uploaded_file.name)
 
             fs.save(uploaded_file.name, uploaded_file)
-            # Get the file path
             file_path = os.path.join(upload_dir, uploaded_file.name)
 
             print("Pickle file uploaded successfully:", file_path)
@@ -347,7 +312,7 @@ def analytic(request):
             "Nb_precision_class_1": Nb_precision_class_1,
             "Nb_recall_class_1": Nb_recall_class_1,
             "Nb_f1_class_1": Nb_f1_class_1,
-            # "saved_conf_matrix": confusion_matrix,
+
             "lr_accuracy": lr_accuracy,
             "lr_f1_class_0": lr_f1_class_0,
             "lr_precision_class_0": lr_precision_class_0,

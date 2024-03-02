@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +9,24 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <title>Test data</title>
     <style>
-          @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-*{
-    margin: 0;
+        * {
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
-}
+        }
 
-body {
-    height: 100vh;
+        body {
+            height: 100vh;
             width: 100%;
             background-image: url("{% static 'hero.png' %}");
             background-position: center;
             background-size: cover;
-}
-.sidebar {
+        }
+
+        .sidebar {
             position: fixed;
             top: 0;
             left: 0;
@@ -155,6 +157,7 @@ body {
             text-align: center;
             text-transform: uppercase;
         }
+
         .form-box p {
             margin: 0 0 30px;
             padding: 0;
@@ -170,7 +173,7 @@ body {
             align-items: center;
             text-transform: uppercase;
         }
-     
+
         .btn {
             overflow: hidden;
             width: 100%;
@@ -185,14 +188,15 @@ body {
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin-top: 10px; /* Adjust top margin as needed */
-    margin-bottom: 10px; /* Adjust bottom margin as needed */
-    margin-left: 0; /* Adjust left margin as needed */
-    margin-right: 0; /* Adjust right margin as needed */
-    position: relative;
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 0;
+            margin-right: 0;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
         }
+
         .btn1 {
             overflow: hidden;
             width: 100%;
@@ -210,47 +214,49 @@ body {
             text-align: center;
             position: relative;
             display: grid;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
             place-items: center;
         }
 
-.btn input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px; /* Adjust font size to your preference */
-    cursor: pointer;
-    opacity: 0;
-}
-
-.file-label {
-    display: inline-block;
-    padding: 10px 20px; /* Adjust padding to your preference */
-    background-color: #03e9f4; /* Adjust background color */
-    color: #ffffff; /* Adjust text color */
-    border: none;
-    border-radius: 6px;
-    font-size: 16px; /* Adjust font size to your preference */
-    cursor: pointer;
-    padding-left: 90px;
-}
-
-        .btn:hover{
-            background: #03e9f4;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        .btn input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
         }
-        .btn1:hover{
+
+        .file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #03e9f4;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            padding-left: 90px;
+        }
+
+        .btn:hover {
             background: #03e9f4;
             color: white;
             border-radius: 5px;
-            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+        }
+
+        .btn1:hover {
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
         }
     </style>
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="logo">
@@ -258,59 +264,57 @@ body {
         </div>
         <ul class="links">
             <h4>Admin Dashboard</h4>
-           
+
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
                 <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
             </li>
             <li>
                 <span class="material-symbols-outlined">flag</span>
-                <a href="{% url 'Testdata' %}" >Test the data</a>
+                <a href="{% url 'Testdata' %}">Test the data</a>
             </li>
             <hr>
             <li>
                 <span class="material-symbols-outlined">person</span>
-                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+                <a href="{% url 'manual_dataentry' %}">Manually Enter Data</a>
             </li>
             <li>
                 <span class="material-symbols-outlined">monitoring</span>
-                <a href="{% url 'analytic' %}" >Analytic</a>
+                <a href="{% url 'analytic' %}">Analytic</a>
             </li>
-          
+
             <hr>
             <li class="logout-link">
                 <span class="material-symbols-outlined">logout</span>
-                <a href="{% url 'logout' %}" >Logout</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
     </aside>
+
     <div class="form-box login">
-   <h1>Testing the Data</h1><br>
-    <p>Click on the "Choose File" button to upload a file:</p>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="btn">
-            <input type="file" name="testFile" id="myFile" accept=".pkl" required onchange="updateFileName(this)">
-            <label for="myFile" class="file-label" id="fileLabel">Choose file</label>
-        </div>
-        <button type="submit" class="btn">Upload</button>
-    </form><br>
-    <a href="{% url 'Testing' %}" class="btn1"> Testing</a> 
-
-
-    
- </div>
- 
+        <h1>Testing the Data</h1><br>
+        <p>Click on the "Choose File" button to upload a file:</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="btn">
+                <input type="file" name="testFile" id="myFile" accept=".pkl" required onchange="updateFileName(this)">
+                <label for="myFile" class="file-label" id="fileLabel">Choose file</label>
+            </div>
+            <button type="submit" class="btn">Upload</button>
+        </form><br>
+        <a href="{% url 'Testing' %}" class="btn1"> Testing</a>
+    </div>
 
 </body>
 <script>
-     function updateFileName(input) {
-    const fileLabel = document.getElementById('fileLabel');
-    if (input.files.length > 0) {
-        fileLabel.textContent = input.files[0].name;
-    } else {
-        fileLabel.textContent = 'Choose a .pkl file';
+    function updateFileName(input) {
+        const fileLabel = document.getElementById('fileLabel');
+        if (input.files.length > 0) {
+            fileLabel.textContent = input.files[0].name;
+        } else {
+            fileLabel.textContent = 'Choose a .pkl file';
+        }
     }
-}
 </script>
+
 </html>

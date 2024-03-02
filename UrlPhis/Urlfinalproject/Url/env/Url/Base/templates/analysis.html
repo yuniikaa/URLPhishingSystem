@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,20 +24,20 @@
             background-position: center;
             background-size: cover;
         }
-            
-            #video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background-size: cover;
-}   
 
-.sidebar {
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+        }
+
+        .sidebar {
             position: fixed;
             top: 0;
             left: 0;
@@ -167,6 +168,7 @@
             text-align: center;
             text-transform: uppercase;
         }
+
         .form-box p {
             margin: 0 0 30px;
             padding: 0;
@@ -183,112 +185,113 @@
             text-transform: uppercase;
         }
 
-h1{
-    text-align: center;
-    color: white;
-    font-size: 25px;
-}
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 25px;
+        }
 
-h2{
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-}
+        h2 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+        }
 
-.content-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
-    margin-left: auto;
-  margin-right: auto;
-}
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.content-table thead tr {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-}
+        .content-table thead tr {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
 
-.content-table th,
-.content-table td {
-  color: #ffffff;
-    padding: 12px 15px;
-}
+        .content-table th,
+        .content-table td {
+            color: #ffffff;
+            padding: 12px 15px;
+        }
 
-.content-table tbody tr {
-  border-bottom: 1px solid #355d79;
-}
+        .content-table tbody tr {
+            border-bottom: 1px solid #355d79;
+        }
 
 
-.content-table tbody tr:last-of-type {
-    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
-}
+        .content-table tbody tr:last-of-type {
+            border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+        }
 
-.btn {
-    width: auto;
-    height: 50px;
-    background: #162938;
-    border: none;
-    outline: none;
-    display: flex;
-    justify-content: center;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 20px;
-    color: #03e9f4;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    padding: 10px;
-    margin: 0 auto; 
-    display: block;
-}
-.btn:hover{
-    background: #03e9f4;
-    color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
-}
+        .btn {
+            width: auto;
+            height: 50px;
+            background: #162938;
+            border: none;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #03e9f4;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 10px;
+            margin: 0 auto;
+            display: block;
+        }
 
+        .btn:hover {
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+        }
     </style>
 </head>
+
 <body>
-    
+
     <aside class="sidebar">
         <div class="logo">
             <h2 id="header">Hello {{request.user}}</h2>
         </div>
         <ul class="links">
             <h4>Admin Dashboard</h4>
-           
+
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
                 <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
             </li>
             <li>
                 <span class="material-symbols-outlined">flag</span>
-                <a href="{% url 'Testdata' %}" >Test the data</a>
+                <a href="{% url 'Testdata' %}">Test the data</a>
             </li>
             <hr>
             <li>
                 <span class="material-symbols-outlined">person</span>
-                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+                <a href="{% url 'manual_dataentry' %}">Manually Enter Data</a>
             </li>
             <li>
                 <span class="material-symbols-outlined">monitoring</span>
-                <a href="{% url 'analytic' %}" >Analytic</a>
+                <a href="{% url 'analytic' %}">Analytic</a>
             </li>
-          
+
             <hr>
             <li class="logout-link">
                 <span class="material-symbols-outlined">logout</span>
-                <a href="{% url 'logout' %}" >Logout</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
     </aside>
@@ -296,22 +299,22 @@ h2{
     <video autoplay muted loop id="video-background">
         <source src="{% static 'cc9.mp4' %}" type="video/mp4">
         Your browser does not support HTML5 video.
-        </video>
+    </video>
 
     <h1>{{message}}</h1><br><br>
     <h1>Results from Multinomial Naive Bayes:</h1>
     <div>
         <table border="1" class="content-table">
-        <thead>
-            <tr>
-                <th>
-                    Values
-                </th>
+            <thead>
+                <tr>
+                    <th>
+                        Values
+                    </th>
                     <th>
                         Results
                     </th>
-                
-            </tr>
+
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -350,104 +353,105 @@ h2{
                 </tr>
             </tbody>
         </table>
-            </div>
+    </div>
 
-            <h1>Confusion Matrix</h1>
+    <h1>Confusion Matrix</h1>
 
+    <table border="1" class="content-table">
+        <tr>
+            <th></th>
+            <th>True Positive</th>
+            <th>True Negative</th>
+            <th>False Positive</th>
+            <th>False Negative</th>
+        </tr>
+        <tr>
+            <th></th>
+            <td>{{ saved_conf_matrix.true_positive }}</td>
+            <td>{{ saved_conf_matrix.true_negative }}</td>
+            <td>{{ saved_conf_matrix.false_positive }}</td>
+            <td>{{ saved_conf_matrix.false_negative }}</td>
+        </tr>
+    </table>
+
+    <h1>{{message}}</h1>
+    <h1>Results from Logistic Regression:</h1>
+    <div>
         <table border="1" class="content-table">
-            <tr>
-                <th></th>
-                <th>True Positive</th>
-                <th>True Negative</th>
-                <th>False Positive</th>
-                <th>False Negative</th>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ saved_conf_matrix.true_positive }}</td>
-                <td>{{ saved_conf_matrix.true_negative }}</td>
-                <td>{{ saved_conf_matrix.false_positive }}</td>
-                <td>{{ saved_conf_matrix.false_negative }}</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>
+                        Values
+                    </th>
+                    <th>
+                        Results
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>accuracy:</td>
+                    <td>{{lr_accuracy}}</td>
+                </tr>
+
+                <tr>
+                    <td>precision_class_0:</td>
+                    <td>{{lr_precision_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>recall_class_0:</td>
+                    <td>{{lr_recall_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>f1_class_0:</td>
+                    <td>{{lr_f1_class_0}}</td>
+                </tr>
+
+                <tr>
+                    <td>precision_class_1:</td>
+                    <td>{{lr_precision_class_1}}</td>
+                </tr>
+
+                <tr>
+                    <td>recall_class_1:</td>
+                    <td>{{lr_recall_class_1}}</td>
+                </tr>
+
+                <tr>
+                    <td>f1_class_1:</td>
+                    <td>{{lr_f1_class_1}}</td>
+                </tr>
+            </tbody>
         </table>
+    </div>
 
-            <h1>{{message}}</h1>
-            <h1>Results from Logistic Regression:</h1>
-            <div>
-                <table border="1" class="content-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Values
-                            </th>
-                            <th>
-                                Results
-                            </th>
-            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>accuracy:</td>
-                            <td>{{lr_accuracy}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>precision_class_0:</td>
-                            <td>{{lr_precision_class_0}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>recall_class_0:</td>
-                            <td>{{lr_recall_class_0}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>f1_class_0:</td>
-                            <td>{{lr_f1_class_0}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>precision_class_1:</td>
-                            <td>{{lr_precision_class_1}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>recall_class_1:</td>
-                            <td>{{lr_recall_class_1}}</td>
-                        </tr>
-            
-                        <tr>
-                            <td>f1_class_1:</td>
-                            <td>{{lr_f1_class_1}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <h1>Confusion Matrix</h1>
-            
-            <table border="1" class="content-table">
-                <tr>
-                    <th></th>
-                    <th>True Positive</th>
-                    <th>True Negative</th>
-                    <th>False Positive</th>
-                    <th>False Negative</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td>{{ lr_saved_conf_matrix.true_positive }}</td>
-                    <td>{{ lr_saved_conf_matrix.true_negative }}</td>
-                    <td>{{ lr_saved_conf_matrix.false_positive }}</td>
-                    <td>{{ lr_saved_conf_matrix.false_negative }}</td>
-                </tr>
-            </table><br><br>
-<script>
-    function Dashboard(){
-        window.location.href="/Userlog/";
-    }
+    <h1>Confusion Matrix</h1>
 
-</script>
+    <table border="1" class="content-table">
+        <tr>
+            <th></th>
+            <th>True Positive</th>
+            <th>True Negative</th>
+            <th>False Positive</th>
+            <th>False Negative</th>
+        </tr>
+        <tr>
+            <th></th>
+            <td>{{ lr_saved_conf_matrix.true_positive }}</td>
+            <td>{{ lr_saved_conf_matrix.true_negative }}</td>
+            <td>{{ lr_saved_conf_matrix.false_positive }}</td>
+            <td>{{ lr_saved_conf_matrix.false_negative }}</td>
+        </tr>
+    </table><br><br>
+    <script>
+        function Dashboard() {
+            window.location.href = "/Userlog/";
+        }
+
+    </script>
 </body>
+
 </html>

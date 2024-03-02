@@ -26,14 +26,14 @@
         }
 
         #video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100px;
-  min-height: 100px;
-  width: 100%; /* Set width to 100% of the viewport */
-  z-index: -100;
-}
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100px;
+            min-height: 100px;
+            width: 100%;
+            z-index: -100;
+        }
 
         .sidebar {
             position: fixed;
@@ -44,10 +44,10 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.316);
+            background: rgba(0, 27, 47, 0.44);
             backdrop-filter: blur(10px);
             --webkit-backdrop-filter: blur(17px);
-            border-right: 1px solid rgba(255, 255, 255, 0.7);
+            border-right: 1px solid rgba(0, 78, 120, 0.7);
             transition: width 0.3s ease;
         }
 
@@ -78,6 +78,10 @@
             display: block;
         }
 
+        .sidebar:hover .links li a {
+            display: block;
+        }
+
         .sidebar .links {
             list-style: none;
             margin-top: 20px;
@@ -98,7 +102,7 @@
 
         .links li:hover {
             cursor: pointer;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.335);
         }
 
         .links h4 {
@@ -126,7 +130,7 @@
 
         .links li a {
             padding: 10px;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
             display: none;
             font-weight: 500;
             white-space: nowrap;
@@ -140,38 +144,41 @@
         .links .logout-link {
             margin-top: 20px;
         }
-        span{
-            color: rgb(0, 0, 0);
+
+        span {
+            color: rgb(255, 255, 255);
         }
+
         main {
             margin-left: 120px;
         }
-         h4{
-            color: rgb(0, 0, 0);
-        }
-        #header{
-            color: rgb(0, 0, 0);
-        }
-        #head {
-    color: rgb(255, 255, 255); /* Text color */
-    font-size: 70px; /* Font size */
-    font-style: italic;
-    font-weight: bold; /* Font weight */
-    text-align: center; /* Text alignment */
-    margin: 10px 0; /* Margin top and bottom */
-    padding: 5px; /* Padding */
-    text-transform: uppercase;
-}
 
+        h4 {
+            color: rgb(240, 240, 240);
+        }
+
+        #header {
+            color: rgb(255, 255, 255);
+        }
+
+        #head {
+            color: rgb(255, 255, 255);
+            font-size: 70px;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            padding: 5px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
-
     <video autoplay muted loop id="video-background">
         <source src="{% static 'cc13.mp4' %}" type="video/mp4">
         Your browser does not support HTML5 video.
-        </video>
+    </video>
 
     <aside class="sidebar">
         <div class="logo">
@@ -179,30 +186,30 @@
         </div>
         <ul class="links">
             <h4>Admin Dashboard</h4>
-            
+
             <li>
                 <span class="material-symbols-outlined">show_chart</span>
                 <a href="{% url  'Datatrain' %}">Import Data For Data Train</a>
             </li>
             <li>
                 <span class="material-symbols-outlined">flag</span>
-                <a href="{% url 'Testdata' %}" >Test the data</a>
+                <a href="{% url 'Testdata' %}">Test the data</a>
             </li>
             <hr>
             <li>
                 <span class="material-symbols-outlined">person</span>
-                <a href="{% url 'manual_dataentry' %}" >Manually Enter Data</a>
+                <a href="{% url 'manual_dataentry' %}">Manually Enter Data</a>
             </li>
-            <li> 
+            <li>
             <li>
                 <span class="material-symbols-outlined">monitoring</span>
-                <a href="{% url 'analytic' %}" >Analytic</a>
+                <a href="{% url 'analytic' %}">Analytic</a>
             </li>
-    
+
             <hr>
             <li class="logout-link">
                 <span class="material-symbols-outlined">logout</span>
-                <a href="{% url 'logout' %}" >Logout</a>
+                <a href="{% url 'logout' %}">Logout</a>
             </li>
         </ul>
     </aside><br><br><br>
@@ -211,4 +218,4 @@
     </main>
 </body>
 
-</html> 
+</html>

@@ -1,150 +1,155 @@
 {% load static %}
 <html>
-  <head>
-    <title>
-      AboutProject
-    </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
-    <style>
-      *{
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', Sans-serif;
-    box-sizing: border-box;
-}
 
-body{
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100%;
-  font-family: "Poppins", sans-serif;
-  /* background: linear-gradient(#141e30, #243b55); */
-  background-position: center;
-  background-size: cover;
-}
+<head>
+  <title>
+    AboutProject
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: 'Poppins', Sans-serif;
+      box-sizing: border-box;
+    }
 
-#video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background-size: cover;
-} 
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100%;
+      font-family: "Poppins", sans-serif;
+      background-position: center;
+      background-size: cover;
+    }
+
+    #video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      background-size: cover;
+    }
 
 
-.about{
-    width: 100%;
-    padding: 78px 0px;
-}
+    .about {
+      width: 100%;
+      padding: 78px 0px;
+    }
 
-.about img{
-    height: 520px;
-    width: 520px;
-    justify-content: center;
-    box-shadow: 0 0 30px #081823;
-}
+    .about img {
+      height: 520px;
+      width: 520px;
+      justify-content: center;
+      box-shadow: 0 0 30px #081823;
+    }
 
-.about-text{
-    width: 550px;
-}
+    .about-text {
+      width: 550px;
+    }
 
-.main{
-    width: 1130px;
-    max-width: 95%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
+    .main {
+      width: 1130px;
+      max-width: 95%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
 
-.about-text h1{
-    color: white;
-    font-size: 50px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-}
+    .about-text h1 {
+      color: white;
+      font-size: 50px;
+      text-transform: capitalize;
+      margin-bottom: 20px;
+    }
 
-.about-text h5{
-    color: white;
-    font-size: 20px;
-    text-transform: capitalize;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
-}
+    .about-text h5 {
+      color: white;
+      font-size: 20px;
+      text-transform: capitalize;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
 
-.about-text p{
-  color: aliceblue;
-    letter-spacing: 1px;
-    line-height: 28px;
-    font-size: 18px;
-    margin-bottom: 30px;
-    text-align: justify;
-}
+    .about-text p {
+      color: aliceblue;
+      letter-spacing: 1px;
+      line-height: 28px;
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
 
-.button-container {
-    white-space: nowrap; /* Prevents line breaks */
-}
+    .button-container {
+      white-space: nowrap;
+    }
 
-.button-container a {
-    display: inline-block; /* Make buttons appear side by side */
-    margin-right: 10px; /* Adjust spacing between buttons */
-}
+    .button-container a {
+      display: inline-block;
+      margin-right: 10px;
+    }
 
-button{
-  overflow: hidden;
-  width: 200px;
-  height: 45px;
-  background: #03e9f4;
-  border: none;
-  outline: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-    position: relative;
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
-}
+    button {
+      overflow: hidden;
+      width: 200px;
+      height: 45px;
+      background: #03e9f4;
+      border: none;
+      outline: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+    }
 
-button:hover{
-            background: #03e9f4;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
-}
+    button:hover {
+      background: #03e9f4;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+    }
+  </style>
+</head>
 
-    </style>
-  </head>
+<body>
 
-  <body>
-
-    <video autoplay muted loop id="video-background">
-      <source src="{% static 'cc11.mp4' %}" type="video/mp4">
-      Your browser does not support HTML5 video.
-      </video>
-    <section class="about">
-      <div class="main">
-        <img src="{% static 'cc12.png' %}">
-        <div class="about-text">
-          <h1>ABOUT PROJECT</h1>
-          <h5>URL PHISHING MALWARE DETECTION SYSTEM</h5>
-          <p>The internet has become an integral part of modern society and provides numerous benefits such as information access and communication. However, it also poses significant cybersecurity risks. To address the growing threat of phishing attacks, URL Phishing Malware Detection System analyzes URL features to distinguish between legitimate websites and malicious phishing sites, to enhance cybersecurity measures using Multinomial Naïve Bayes and Logistics Regression.</p>
-          <div class="button-container">
-            <a href="{% url 'login' %}"><button type="button">GET STARTED</button></a>
-            <a href="{% url 'home' %}"><button type="button">HOME</button></a>
-        </div>
+  <video autoplay muted loop id="video-background">
+    <source src="{% static 'cc11.mp4' %}" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <section class="about">
+    <div class="main">
+      <img src="{% static 'cc12.png' %}">
+      <div class="about-text">
+        <h1>ABOUT PROJECT</h1>
+        <h5>URL PHISHING MALWARE DETECTION SYSTEM</h5>
+        <p>The internet has become an integral part of modern society and provides numerous benefits such as information
+          access and communication. However, it also poses significant cybersecurity risks. To address the growing
+          threat of phishing attacks, URL Phishing Malware Detection System analyzes URL features to distinguish between
+          legitimate websites and malicious phishing sites, to enhance cybersecurity measures using Multinomial Naïve
+          Bayes and Logistics Regression.</p>
+        <div class="button-container">
+          <a href="{% url 'login' %}"><button type="button">GET STARTED</button></a>
+          <a href="{% url 'home' %}"><button type="button">HOME</button></a>
         </div>
       </div>
-    </section>
-  </body>
+    </div>
+  </section>
+</body>
+
 </html>
